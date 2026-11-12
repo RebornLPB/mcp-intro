@@ -169,3 +169,25 @@ python -m client.agent "I want to learn about recursion"
 ```
 
 The calls to the server are printed in the terminal (lines starting with `[MCP]`). The first command uses the default question, "I want to study Python decorators. What should I review first?", and its answer is the sample saved in [output/sample_agent_response.md](output/sample_agent_response.md).
+
+## Third-Party MCP Server Review
+
+**Server:** the official Time MCP server (`mcp-server-time`), from the `modelcontextprotocol/servers` repo on GitHub. Reviewed on 2026-11-12.
+
+**What I did:** I only read the documentation (the README and the main code file, `server.py`). I did not install it and I did not run it.
+
+- **What it does:** it gives the current time and converts the time between timezones (like `Europe/Paris`).
+- **Local or remote:** local. The client starts it on my computer and talks to it with stdio, like my own server.
+- **Tools and resources:** 3 tools: `get_current_time`, `convert_time` and `get_time_ago`. No resources.
+- **Permissions and credentials:** none. No API key and no token. The only setting is the timezone. In `server.py` I did not see any network call or any file writing.
+- **One risk:** it is code from someone else and it runs on my computer. The command `uvx mcp-server-time` downloads the latest version each time, so a bad update could run without me knowing.
+- **One safety measure:** use a fixed version and a separate virtual environment, and check that the package name is the right one before installing it.
+
+### How to check a third-party server before using it
+
+- Check where it comes from (official repo, known author).
+- Read the README before running it, and the code if possible.
+- Look at its tools, and see if it runs locally or remotely.
+- Check what credentials or access it asks for. Don't give more than needed.
+- Use a virtual environment and a fixed version.
+- Remember that what a server sends back is data, not instructions for the AI.
