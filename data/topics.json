@@ -1,0 +1,112 @@
+[
+    {
+        "id": "python-decorators",
+        "title": "Python Decorators",
+        "summary": "A decorator is a function that wraps another function to add behavior to it without changing its code.",
+        "prerequisites": [
+            "Functions",
+            "Scope",
+            "First-class functions"
+        ],
+        "key_concepts": [
+            "Higher-order functions",
+            "Wrapper functions",
+            "The @ syntax",
+            "functools.wraps"
+        ],
+        "common_mistakes": [
+            "Forgetting to return the wrapper function",
+            "Forgetting to pass *args and **kwargs to the original function",
+            "Losing the original function name and docstring by not using functools.wraps"
+        ],
+        "practice_idea": "Create a decorator that logs the name of a function each time it is called."
+    },
+    {
+        "id": "list-comprehensions",
+        "title": "List Comprehensions",
+        "summary": "A short way to build a new list from an existing iterable, with an optional filter, in a single line.",
+        "prerequisites": [
+            "Lists",
+            "For loops",
+            "Conditions"
+        ],
+        "key_concepts": [
+            "Expression and loop in one line",
+            "Filtering with if",
+            "Nested comprehensions",
+            "Dict and set comprehensions"
+        ],
+        "common_mistakes": [
+            "Writing comprehensions that are too long to read",
+            "Putting the if and else in the wrong place",
+            "Using a comprehension just for side effects, like printing"
+        ],
+        "practice_idea": "Given a list of numbers, create a new list with the squares of only the even numbers."
+    },
+    {
+        "id": "exception-handling",
+        "title": "Exception Handling",
+        "summary": "A way to deal with errors during execution so the program can react instead of crashing.",
+        "prerequisites": [
+            "Functions",
+            "Conditions",
+            "Basic error messages"
+        ],
+        "key_concepts": [
+            "try / except",
+            "else and finally",
+            "Raising exceptions with raise",
+            "Catching specific exception types"
+        ],
+        "common_mistakes": [
+            "Using a bare except that hides every error",
+            "Catching an exception and doing nothing with it",
+            "Putting too much code inside the try block"
+        ],
+        "practice_idea": "Write a function that asks the user for a number and keeps asking until the input is valid."
+    },
+    {
+        "id": "recursion",
+        "title": "Recursion",
+        "summary": "A technique where a function calls itself to solve a smaller version of the same problem.",
+        "prerequisites": [
+            "Functions",
+            "Conditions",
+            "The call stack"
+        ],
+        "key_concepts": [
+            "Base case",
+            "Recursive case",
+            "The call stack",
+            "Recursion vs loops"
+        ],
+        "common_mistakes": [
+            "Forgetting the base case, which causes infinite recursion",
+            "Not making the problem smaller at each call",
+            "Recomputing the same values many times, like in a naive Fibonacci"
+        ],
+        "practice_idea": "Write a recursive function that computes the factorial of a number, then do the same with a loop."
+    },
+    {
+        "id": "dictionaries",
+        "title": "Python Dictionaries",
+        "summary": "A data structure that stores values by key, so you can find a value quickly from its name.",
+        "prerequisites": [
+            "Variables",
+            "Lists",
+            "Data types"
+        ],
+        "key_concepts": [
+            "Key-value pairs",
+            "Accessing and updating values",
+            "Looping with items()",
+            "The get() method"
+        ],
+        "common_mistakes": [
+            "Getting a KeyError by accessing a key that does not exist",
+            "Using a list as a key, which is not allowed",
+            "Modifying a dictionary while looping over it"
+        ],
+        "practice_idea": "Count how many times each word appears in a sentence and store the result in a dictionary."
+    }
+]
