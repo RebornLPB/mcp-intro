@@ -146,3 +146,26 @@ What was checked:
 ```
 
 Note: Inspector shows a list result inside `{"result": [...]}` in its "Structured Output" panel. This is added by FastMCP, because structured output must be an object.
+
+## Agent
+
+`client/agent.py` is a simple agent-like client. It does not use an LLM: it calls the MCP tools with deterministic code. It never imports the server code, it only talks to the server through MCP.
+
+How it works:
+
+1. It receives a student question (a command line argument, or a default example question).
+2. It extracts the useful keywords of the question (it ignores common words like "want" or "study").
+3. It starts the MCP server as a subprocess (stdio transport, using `client/mcp_client.py`) and calls `search_topics` for each keyword. The topic found by the most keywords is chosen.
+4. It calls `get_topic_details` with the id of that topic.
+5. It writes a short answer from the returned data and saves it in `output/sample_agent_response.md`.
+
+If no topic matches, the answer says it clearly.
+
+Run it from the project root, with the virtual environment activated:
+
+```bash
+python -m client.agent
+python -m client.agent "I want to learn about recursion"
+```
+
+The calls to the server are printed in the terminal (lines starting with `[MCP]`). The first command uses the default question, "I want to study Python decorators. What should I review first?", and its answer is the sample saved in [output/sample_agent_response.md](output/sample_agent_response.md).
