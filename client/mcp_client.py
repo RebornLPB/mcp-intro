@@ -14,7 +14,7 @@ SERVER_PATH = Path(__file__).resolve().parent.parent / "server" / "learning_serv
 
 def create_client() -> Client:
     """Create an MCP client that launches the server script over stdio."""
-    return Client(str(SERVER_PATH))
+    return Client(SERVER_PATH)
 
 
 async def call_tool(client: Client, name: str, arguments: dict):
