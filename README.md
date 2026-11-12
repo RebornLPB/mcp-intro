@@ -97,3 +97,52 @@ Example of what it returns:
 ```json
 [{"id": "python-decorators", "title": "Python Decorators"}, {"id": "recursion", "title": "Recursion"}]
 ```
+
+## Testing
+
+The server was tested with [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector), before connecting it to any agent.
+
+With the virtual environment activated, run:
+
+```bash
+npx @modelcontextprotocol/inspector python server/learning_server.py
+```
+
+This starts the server and opens a web page. The server appears as "Disconnected" in the **Servers** list: use the toggle button next to it to start and connect it. Then use the **Tools** and **Resources** tabs.
+
+What was checked:
+
+- The server starts and Inspector shows "Connected".
+- The 2 tools (`search_topics` and `get_topic_details`) are listed.
+- `search_topics` works with a valid query.
+- `get_topic_details` works with a valid id.
+- The `topics://catalog` resource can be read and contains the 5 topics.
+- Invalid inputs give a clear message and do not crash the server.
+
+### Sample outputs
+
+`search_topics` with `recursion`:
+
+```json
+[
+  {
+    "id": "recursion",
+    "title": "Recursion",
+    "summary": "A technique where a function calls itself to solve a smaller version of the same problem."
+  }
+]
+```
+
+`search_topics` with `java` (no match):
+
+```json
+[{"message": "No topic found for 'java'."}]
+```
+
+`get_topic_details` with `java` (unknown id):
+
+```json
+{"error": "No topic found with id 'java'. Use search_topics to find a valid id."}
+```
+
+Note: Inspector shows a list result inside `{"result": [...]}` in its "Structured Output" panel. This is added by FastMCP, because structured output must be an object.
